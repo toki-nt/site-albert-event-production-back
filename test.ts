@@ -10,13 +10,13 @@ import * as express from "express";
 import * as cors from "cors";
 import * as dotenv from "dotenv";
 import * as mongoose from "mongoose";
-import userRoutes from "./src/routes/userRoutes";
-import authRoutes from "./src/routes/authRoutes";
-import serviceRoutes from "./src/routes/serviceRoutes";
-import galleryRoutes from "./src/routes/galleryRoutes";
-import paymentRoutes from "./src/routes/paymentRoutes";
-import messageRoutes from "./src/routes/messageRoutes";
-import profileRoutes from "./src/routes/profileRoutes";
+import userRoutes from "./src/routes/userRoutes.ts";
+import authRoutes from "./src/routes/authRoutes.ts";
+import serviceRoutes from "./src/routes/serviceRoutes.ts";
+import galleryRoutes from "./src/routes/galleryRoutes.ts";
+import paymentRoutes from "./src/routes/paymentRoutes.ts";
+import messageRoutes from "./src/routes/messageRoutes.ts";
+import profileRoutes from "./src/routes/profileRoutes.ts";
 
 // Import corrigé - soit supprimez accompanimentRoutes, soit créez le fichier
 // Pour l'instant, supprimons l'import qui cause l'erreur

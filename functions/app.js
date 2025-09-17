@@ -3,7 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import serverless from "serverless-http";
 // import testHandler from "../test.ts"; // ajuste le chemin si nécessaire
-import api_start from "../src/app.ts"; // ajuste le chemin si nécessaire
+import api_start from "../test.ts"; // ajuste le chemin si nécessaire
 
 const app = express();
 

@@ -1,10 +1,7 @@
-import serverless from "serverless-http";
-import express, { Request, Response } from "express";
+import { Request, Response } from "express";
 
-const app = express();
+const testHandler = (req: Request, res: Response) => {
+  res.json({ message: "Hello from test.ts!" });
+};
 
-app.get("*", (req: Request, res: Response) => {
-  res.send("say hello ALBERT!!!");
-});
-
-export const handler = serverless(app);
+export default testHandler;

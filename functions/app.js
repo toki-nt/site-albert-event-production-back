@@ -1,4 +1,10 @@
-const testHandler = require("../test");
+require("ts-node/register"); // permet de charger les .ts
+const testHandler = require("../test.ts"); // maintenant ça fonctionne
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const serverless = require("serverless-http");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
@@ -7,4 +13,4 @@ app.use(cors());
 
 app.use("/.netlify/functions/app", testHandler);
 
-export const handler = serverless(app);
+module.exports.handler = serverless(app);

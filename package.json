@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "ts-node functions/app.ts",
+    "dev": "ts-node functions/app.js",
     "start": "node dist/functions/app.js",
     "build": "tsc",
     "serve": "node dist/app.js",

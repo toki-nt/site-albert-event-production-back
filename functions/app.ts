@@ -13,9 +13,9 @@ app.use(express.json());
 app.use(cors());
 
 // Redirige toutes les requêtes vers le handler de app.ts
-app.use("/.netlify/functions/api", (req, res, next) => {
+app.use("/.netlify/functions/app", (req, res, next) => {
   // Comme serverless-http retourne un handler Lambda, on l'appelle directement
-  return appHandler(req, res, next as any); 
+  return appHandler(req, res, next as any);
 });
 
 export const handler = serverless(app);

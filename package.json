@@ -5,8 +5,8 @@
   "main": "dist/app.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "ts-node functions/app.js",
-    "start": "node dist/functions/app.js",
+    "start": "node functions/app.js",
+    "dev": "nodemon",
     "build": "tsc",
     "serve": "node dist/app.js",
     "seed": "ts-node src/scripts/seedData.ts"

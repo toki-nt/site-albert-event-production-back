@@ -4,7 +4,7 @@ import express, { Request, Response } from "express";
 const app = express();
 
 app.get("*", (req: Request, res: Response) => {
-  res.send("say hello !!!");
+  res.send("say hello ALBERT!!!");
 });
 
 export const handler = serverless(app);

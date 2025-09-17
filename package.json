@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "type": "commonjs",
   "scripts": {
-    "start": "node dist/app.js",
+    "start": "node functions/app.js",
     "dev": "nodemon",
     "build": "tsc",
     "serve": "node dist/app.js",

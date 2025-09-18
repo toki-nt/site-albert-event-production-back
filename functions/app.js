@@ -6,6 +6,12 @@ import serverless from "serverless-http";
 import api_start from "../test.ts"; // ajuste le chemin si nécessaire
 
 const app = express();
+require.extensions[".ts"] = function (module, filename) {
+  const fs = require("fs");
+  const content = fs.readFileSync(filename, "utf8");
+  // Vous pouvez ajouter une transpilation TypeScript ici si nécessaire
+  module._compile(content, filename);
+};
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));

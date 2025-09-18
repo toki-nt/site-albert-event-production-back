@@ -1,16 +1,19 @@
-import express from "express";
-import cors from "cors";
-import bodyParser from "body-parser";
-import serverless from "serverless-http";
-import api_start from "../app"; // ajuste le chemin si nécessaire
+const express = require("express");
+const cors = require("cors");
+const bodyParser = require("body-parser");
+const serverless = require("serverless-http");
+const app = require("../app"); // Import de votre app Express
 
-const app = express();
+// Création d'une instance Express pour Netlify
+const netlifyApp = express();
 
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+// Middleware
+netlifyApp.use(bodyParser.json());
+netlifyApp.use(express.urlencoded({ extended: true }));
+netlifyApp.use(cors());
 
-// app.use("/.netlify/functions/app", testHandler);
-app.use("/.netlify/functions/app", api_start);
+// Montez votre application principale sur le chemin Netlify
+netlifyApp.use("/.netlify/functions/app", app.default || app);
 
-export const handler = serverless(app);
+// Handler pour Netlify Functions
+exports.handler = serverless(netlifyApp);

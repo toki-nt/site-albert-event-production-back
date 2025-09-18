@@ -87,4 +87,4 @@ app.listen(PORT, () => {
   console.log(`🌐 Environment: ${process.env.NODE_ENV}`);
   console.log(`📊 Health check: http://localhost:${PORT}/api/health`);
 });
-exports.default = app;
+module.exports = app;

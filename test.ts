@@ -5,12 +5,7 @@
 // };
 
 // export default testHandler;
-require.extensions[".ts"] = function (module, filename) {
-  const fs = require("fs");
-  const content = fs.readFileSync(filename, "utf8");
-  // Vous pouvez ajouter une transpilation TypeScript ici si nécessaire
-  module._compile(content, filename);
-};
+
 import * as express from "express";
 import * as cors from "cors";
 import * as dotenv from "dotenv";

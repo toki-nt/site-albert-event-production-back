@@ -1,7 +1,7 @@
-import * as express from "express";
-import * as cors from "cors";
-import * as dotenv from "dotenv";
-import * as mongoose from "mongoose";
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes";
 import authRoutes from "./routes/authRoutes";
 import serviceRoutes from "./routes/serviceRoutes";
@@ -9,9 +9,6 @@ import galleryRoutes from "./routes/galleryRoutes";
 import paymentRoutes from "./routes/paymentRoutes";
 import messageRoutes from "./routes/messageRoutes";
 import profileRoutes from "./routes/profileRoutes";
-
-// Import corrigé - soit supprimez accompanimentRoutes, soit créez le fichier
-// Pour l'instant, supprimons l'import qui cause l'erreur
 
 dotenv.config();
 
@@ -44,7 +41,7 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/profiles", profileRoutes);
 
 // Route de santé
-app.get("/api/health", (req, res) => {
+app.get("/api/health", (req: express.Request, res: express.Response) => {
   res.status(200).json({
     message: "Server is running!",
     timestamp: new Date().toISOString(),
@@ -53,7 +50,7 @@ app.get("/api/health", (req, res) => {
 });
 
 // Route d'accueil
-app.get("/", (req, res) => {
+app.get("/", (req: express.Request, res: express.Response) => {
   res.json({
     message: "Bienvenue sur l'API AE Production",
     version: "1.0.0",
@@ -71,7 +68,7 @@ app.get("/", (req, res) => {
 });
 
 // Gestion des erreurs 404
-app.use("*", (req, res) => {
+app.use("*", (req: express.Request, res: express.Response) => {
   res.status(404).json({ message: "Route not found" });
 });
 

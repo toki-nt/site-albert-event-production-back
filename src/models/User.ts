@@ -1,5 +1,5 @@
-import * as mongoose from "mongoose";
-import * as bcrypt from "bcryptjs";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 
 export interface IUser extends mongoose.Document {
   firstName: string;
@@ -27,6 +27,11 @@ export interface IUser extends mongoose.Document {
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
+}
+
+// Interface pour l'utilisateur sans le mot de passe (pour le retour API)
+export interface IUserWithoutPassword extends Omit<IUser, "password"> {
+  // Cette interface hérite de IUser mais sans le champ password
 }
 
 const userSchema = new mongoose.Schema<IUser>(
@@ -139,11 +144,12 @@ userSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, user.password);
 };
 
-// Supprime le password du JSON output
+// Supprime le password du JSON output - CORRECTION
 userSchema.methods.toJSON = function () {
   const user = this.toObject() as IUser;
-  delete user.password;
-  return user;
+  const userWithoutPassword = { ...user };
+  delete (userWithoutPassword as any).password;
+  return userWithoutPassword;
 };
 
 export default mongoose.model<IUser>("User", userSchema);

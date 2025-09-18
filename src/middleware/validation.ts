@@ -1,19 +1,22 @@
 import { Request, Response, NextFunction } from "express";
-import { validationResult } from "express-validator";
 
-export const validateRequest = (
+// Solution de contournement
+const getValidationResult = (req: Request) => {
+  // @ts-ignore
+  return require("express-validator").validationResult(req);
+};
+
+export const handleValidationErrors = (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
-  const errors = validationResult(req);
-
+  const errors = getValidationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({
-      message: "Données invalides",
+      message: "Validation failed",
       errors: errors.array(),
     });
   }
-
   next();
 };
